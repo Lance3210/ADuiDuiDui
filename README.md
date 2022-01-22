@@ -7,12 +7,6 @@
 用git提交的，这边已经做好ignore了，直接commit即可
 要加入协作的可以发GitHub邮箱给我
 
-## Unity编辑器：
-TileMap：
-Isometric Z As Y类型的TileMap
-Unity中100像素为1个单位
-Unity搭瓷砖地图教程：https://www.bilibili.com/video/av80443966/
-
 ## UGUI：
 估计也不会超过10个面板，直接修改预制体里面的UI面板即可
 做好的面板会放在Resources/UI下作为预制体使用UIMgr动态管理
