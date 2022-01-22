@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 //Ã· æ√Ê∞Â
@@ -15,6 +16,7 @@ public class TipsView : BasePanel
 	void OnClickQuit()
 	{
 		HideMe();
+		SceneManager.LoadScene("GameStart");
 		UIMgr.Instance.ShowPanel("GameStartView");
 		UIMgr.Instance.HidePanel("PlayerView");
 	}

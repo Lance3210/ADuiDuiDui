@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 //游戏入口
 public class GameStartView : BasePanel
 {
-	public GameObject scene;
 	public float fadeTime = 2f;
 	private Image mask;
 	void OnEnable()
 	{
-		scene.SetActive(false);
 		GetComponent<CanvasGroup>().interactable = true;
 		mask = GetControl<Image>("img_mask");
 		mask.color = Color.black;
@@ -21,8 +20,6 @@ public class GameStartView : BasePanel
 
 	void Start()
     {
-		scene = GameObject.Find("Scene");
-		scene.SetActive(false);
 		GetControl<Button>("btn_start").onClick.AddListener(StartGame);
 		GetControl<Button>("btn_exit").onClick.AddListener(ExitGame);
 		mask = GetControl<Image>("img_mask");
@@ -41,8 +38,10 @@ public class GameStartView : BasePanel
 	void LaterStart()
 	{
 		HideMe();
-		scene.SetActive(true);
 		UIMgr.Instance.ShowPanel("PlayerView", (panel) => {
+			SceneMgr.Instance.LoadSceneAsync("Game", ()=> {
+				ResMgr.Instance.Load<GameObject>("Game/Lab");
+			});
 			print("Start");
 		});
 	}
