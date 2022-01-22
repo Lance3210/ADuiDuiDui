@@ -14,7 +14,7 @@ public class SceneMgr : SingletonMgrBase<SceneMgr>
     /// </summary>
     /// <param name="scene">场景名称</param>
     /// <param name="action">加载完成后的逻辑</param>
-    public void LoadScene(string scene, UnityAction action)
+    public void LoadScene(string scene, UnityAction action = null)
     {
         SceneManager.LoadScene(scene);
         action();

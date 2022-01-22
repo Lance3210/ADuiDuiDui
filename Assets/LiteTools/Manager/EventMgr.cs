@@ -30,7 +30,7 @@ public class EventMgr : SingletonMgrBase<EventMgr>
     /// </summary>
     /// <param name="name">事件名称</param>
     /// <param name="info">委托参数</param>
-    public void EventTrigger(string name, object info)
+    public void EventTrigger(string name, object info = null)
     {
         if (eventDic.ContainsKey(name))
         {

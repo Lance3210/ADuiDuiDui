@@ -50,7 +50,7 @@ TagManager:
   - name: Object
     uniqueID: 1686306191
     locked: 0
-  - name: Player
+  - name: NPC
     uniqueID: 3688068459
     locked: 0
   - name: UI

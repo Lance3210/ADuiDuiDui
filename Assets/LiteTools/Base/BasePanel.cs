@@ -7,7 +7,7 @@ using UnityEngine.UI;
 /// <summary>
 /// UI面板基类 
 /// </summary>
-public class BasePanel : MonoBehaviour
+public class BasePanel : SingletonMgrMonoBase<BasePanel>
 {
 	//存储所有的控件
 	private Dictionary<string, List<UIBehaviour>> controlDic = new Dictionary<string, List<UIBehaviour>>();
@@ -27,7 +27,7 @@ public class BasePanel : MonoBehaviour
 	/// </summary>
 	public virtual void ShowMe()
 	{
-		
+		gameObject.SetActive(true);
 	}
 
 	/// <summary>
@@ -35,7 +35,7 @@ public class BasePanel : MonoBehaviour
 	/// </summary>
 	public virtual void HideMe()
 	{
-
+		gameObject.SetActive(false);
 	}
 
 	protected virtual void OnClick(string btnName)
@@ -54,7 +54,7 @@ public class BasePanel : MonoBehaviour
 	/// <typeparam name="T"></typeparam>
 	/// <param name="controlName"></param>
 	/// <returns></returns>
-	protected T GetControl<T>(string controlName) where T : UIBehaviour
+	public T GetControl<T>(string controlName) where T : UIBehaviour
 	{
 		if(controlDic.ContainsKey(controlName))
 		{

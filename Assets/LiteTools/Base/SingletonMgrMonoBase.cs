@@ -8,37 +8,20 @@
 public abstract class SingletonMgrMonoBase<T> : MonoBehaviour where T : SingletonMgrMonoBase<T>
 {
 	private static T instance;
-	[Tooltip("你可以控制该脚本在切换场景时是否销毁（非根物体无效）")]
-	public bool isDestoryOnLoad = false;
-	public static T Instance {
-		get {
-			if (instance == null)
-			{
-				GameObject obj = new GameObject();
-				instance = obj.AddComponent<T>();
-			}
-			return instance;
-		}
-	}
+	//[Tooltip("你可以控制该脚本在切换场景时是否销毁（非根物体无效）")]
+	//public bool isDestoryOnLoad = false;
+	public static T Instance => instance;
 
 	private void Awake()
 	{
-		if (instance == null)
-		{
-			instance = this as T;
-			name = typeof(T).Name;
-		}
-		else
-		{
-			Destroy(gameObject);
-		}
+		instance = this as T;
 	}
 
 	private void Update()
 	{
-		if (!isDestoryOnLoad && transform.parent == null)
-		{
-			DontDestroyOnLoad(gameObject);//DontDestroyOnLoad要求物体必须为根物体
-		}
+		//if (!isDestoryOnLoad && transform.parent == null)
+		//{
+		//	DontDestroyOnLoad(gameObject);//DontDestroyOnLoad要求物体必须为根物体
+		//}
 	}
 }
