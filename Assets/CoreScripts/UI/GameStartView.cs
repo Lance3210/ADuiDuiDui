@@ -6,23 +6,24 @@ using DG.Tweening;
 using UnityEngine.SceneManagement;
 
 //游戏入口
-public class GameStartView : BasePanel
+public class GameStartView : MonoBehaviour
 {
 	public float fadeTime = 2f;
-	private Image mask;
+	public Image mask;
+	public Button btn_start;
+	public Button btn_quit;
+	public CanvasGroup group;
 	void OnEnable()
 	{
-		GetComponent<CanvasGroup>().interactable = true;
-		mask = GetControl<Image>("img_mask");
+		group.interactable = true;
 		mask.color = Color.black;
 		mask.DOFade(0, fadeTime);
 	}
 
 	void Start()
     {
-		GetControl<Button>("btn_start").onClick.AddListener(StartGame);
-		GetControl<Button>("btn_exit").onClick.AddListener(ExitGame);
-		mask = GetControl<Image>("img_mask");
+		btn_start.onClick.AddListener(StartGame);
+		btn_quit.onClick.AddListener(ExitGame);
 		mask.color = Color.black;
 		mask.DOFade(0, fadeTime);
 	}
@@ -30,20 +31,16 @@ public class GameStartView : BasePanel
 	void StartGame()
 	{
 		Invoke("LaterStart", fadeTime);
-		GetComponent<CanvasGroup>().interactable = false;
+		group.interactable = false;
 		mask.color = Color.clear;
 		mask.DOFade(1, fadeTime);
 	}
 
 	void LaterStart()
 	{
-		HideMe();
-		UIMgr.Instance.ShowPanel("PlayerView", (panel) => {
-			SceneMgr.Instance.LoadSceneAsync("Game", ()=> {
-				ResMgr.Instance.Load<GameObject>("Game/Lab");
-			});
-			print("Start");
-		});
+		gameObject.SetActive(false);
+		UIRoot.Instance.Open("PlayerView");
+		UIRoot.Instance.Open("GameView");
 	}
 
 	void ExitGame()

@@ -5,24 +5,27 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 //Ã· æ√Ê∞Â
-public class TipsView : BasePanel
+public class TipsView : MonoBehaviour
 {
+	public Button btn_cancel;
+	public Button btn_quit;
+
 	void Start()
 	{
-		GetControl<Button>("btn_cancel").onClick.AddListener(HideMe);
-		GetControl<Button>("btn_quit").onClick.AddListener(OnClickQuit);
+		btn_cancel.onClick.AddListener(OnClickCancel);
+		btn_quit.onClick.AddListener(OnClickQuit);
 	}
 
 	void OnClickQuit()
 	{
-		HideMe();
-		SceneManager.LoadScene("GameStart");
-		UIMgr.Instance.ShowPanel("GameStartView");
-		UIMgr.Instance.HidePanel("PlayerView");
+		gameObject.SetActive(false);
+		UIRoot.Instance.Open("GameStartView");
+		UIRoot.Instance.Close("PlayerView");
+		UIRoot.Instance.Close("GameView");
 	}
 
-	void Update()
+	void OnClickCancel()
 	{
-
+		gameObject.SetActive(false);
 	}
 }

@@ -5,26 +5,32 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //玩家主界面
-public class PlayerView : BasePanel
+public class PlayerView : MonoBehaviour
 {
 	public float fadeTime = 2f;
-	private Image mask;
-	void Start()
+	public Image mask;
+	public Button btn_drink;
+	public Button btn_setting;
+	public Slider slider;
+	private void OnEnable()
 	{
-		mask = GetControl<Image>("img_mask");
 		mask.color = Color.black;
-		GetControl<Button>("btn_setting").onClick.AddListener(OnClickSetting);
 		mask.DOFade(0, fadeTime);
+	}
+
+	private void Start()
+	{
+		btn_setting.onClick.AddListener(OnClickSetting);
+		btn_drink.onClick.AddListener(OnClickDrinking);
 	}
 
 	void OnClickSetting()
 	{
-		UIMgr.Instance.ShowPanel("TipsView");
+		UIRoot.Instance.Open("TipsView");
 	}
 
-	// Update is called once per frame
-	void Update()
-    {
-        
-    }
+	void OnClickDrinking()
+	{
+		print("drink");
+	}
 }

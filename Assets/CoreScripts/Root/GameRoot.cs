@@ -7,13 +7,10 @@ using UnityEngine.UI;
 //游戏root
 public class GameRoot : MonoBehaviour
 {
-	public float fadeTime = 2f;
+	public Transform root;
     void Start()
     {
-		DontDestroyOnLoad(Camera.main);
-		DontDestroyOnLoad(gameObject);
-		UIMgr.Instance.ShowPanel("GameStartView", (p) => {
-			print("Game Run");
-		});
+		root.GetComponent<UIRoot>().Open("GameStartView");
     }
+
 }
