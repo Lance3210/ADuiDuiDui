@@ -7,26 +7,37 @@ using UnityEngine.UI;
 public class GameView : MonoBehaviour
 {
 	public int level = 0;
-	public Button[] buttons;
-	ObjBase obj;
+	public Button button1;
+	public Button button2;
+	ObjBase obj1;
+	ObjBase obj2;
 	Transform chat;
 	private int days = 1;
 	void Start()
 	{
 		chat = UIRoot.Instance.Get("ChatView");
-		foreach (var btn in buttons)
-		{
-			obj = btn.GetComponent<ObjBase>();
-			obj.count = days - 1;
-			btn.onClick.AddListener(OnClickObj);
-		}
+		obj1 = button1.GetComponent<ObjBase>();
+		obj1.count = days - 1;
+		button1.onClick.AddListener(OnClickObj1);
+
+		chat = UIRoot.Instance.Get("ChatView");
+		obj2 = button2.GetComponent<ObjBase>();
+		obj2.count = days - 1;
+		button2.onClick.AddListener(OnClickObj2);
 	}
 
-	private void OnClickObj()
+	private void OnClickObj1()
 	{
 		UIRoot.Instance.Open("ChatView");
-		EventMgr.Instance.EventTrigger("ClickObj");
-		chat.GetComponent<ChatView>().speak.text = obj.talks[obj.count];
+		EventMgr.Instance.EventTrigger("ClickObj1");
+		chat.GetComponent<ChatView>().speak.text = obj1.talks[obj1.count];
+	}
+
+	private void OnClickObj2()
+	{
+		UIRoot.Instance.Open("ChatView");
+		EventMgr.Instance.EventTrigger("ClickObj2");
+		chat.GetComponent<ChatView>().speak.text = obj2.talks[obj2.count];
 	}
 
 
