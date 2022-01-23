@@ -13,6 +13,8 @@ public class GameView : MonoBehaviour
 	ObjBase obj2;
 	Transform chat;
 	private int days = 1;
+	public int sanityChange1 = 3;
+	public int sanityChange2 = 3;
 	void Start()
 	{
 		chat = UIRoot.Instance.Get("ChatView");
@@ -30,12 +32,14 @@ public class GameView : MonoBehaviour
 	{
 		UIRoot.Instance.Open("ChatView");
 		chat.GetComponent<ChatView>().speak.text = obj1.talks[obj1.count];
+		UIRoot.Instance.Get("PlayerView").GetComponent<PlayerView>().slider.value += sanityChange1;
 	}
 
 	private void OnClickObj2()
 	{
 		UIRoot.Instance.Open("ChatView");
 		chat.GetComponent<ChatView>().speak.text = obj2.talks[obj2.count];
+		UIRoot.Instance.Get("PlayerView").GetComponent<PlayerView>().slider.value += sanityChange2;
 	}
 
 

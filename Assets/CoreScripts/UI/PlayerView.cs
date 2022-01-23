@@ -13,7 +13,7 @@ public class PlayerView : MonoBehaviour
 	public Button btn_setting;
 	public Slider slider;
 	public Text percent;
-	public int sanity = 50;
+	public int medicine = 5;
 	private void OnEnable()
 	{
 		mask.color = Color.black;
@@ -22,22 +22,22 @@ public class PlayerView : MonoBehaviour
 
 	private void Start()
 	{
-		
 		btn_setting.onClick.AddListener(OnClickSetting);
 		btn_drink.onClick.AddListener(OnClickDrinking);
 	}
 
-	void OnClickSetting()
+    private void Update()
+    {
+		percent.text = slider.value.ToString() + "%";
+	}
+    void OnClickSetting()
 	{
 		UIRoot.Instance.Open("TipsView");
 	}
 
 	void OnClickDrinking()
 	{
-		sanity += 5;
  		print("drink");
-		slider.value += 5;
-		percent.text = sanity.ToString() + "%";
-		
+		slider.value += medicine;
 	}
 }
