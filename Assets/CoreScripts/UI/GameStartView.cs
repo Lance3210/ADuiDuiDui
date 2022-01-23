@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using UnityEngine.SceneManagement;
 
 //游戏入口
 public class GameStartView : MonoBehaviour
 {
-	public float fadeTime = 2f;
+	public float fadeTime = 1f;
 	public Image mask;
 	public Button btn_start;
 	public Button btn_quit;

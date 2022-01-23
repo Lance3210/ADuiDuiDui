@@ -1,47 +1,124 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-//��Ϸ����
 public class GameView : MonoBehaviour
 {
-	public int level = 0;
-	public Button button1;
-	public Button button2;
-	ObjBase obj1;
-	ObjBase obj2;
-	Transform chat;
-	private int days = 1;
-	public int sanityChange1 = 3;
-	public int sanityChange2 = 3;
+	public ChatView chat;
+	public Transform objRoot;
+	public Dictionary<string, ObjBase> objDic = new Dictionary<string, ObjBase>();
+	public Button btn_bed;
 	void Start()
 	{
-		chat = UIRoot.Instance.Get("ChatView");
-		obj1 = button1.GetComponent<ObjBase>();
-		obj1.count = days - 1;
-		button1.onClick.AddListener(OnClickObj1);
+		btn_bed.onClick.AddListener(() =>
+		{
+			print("bed");
+			UIRoot.Instance.Open("TipsView");
+			UIRoot.Instance.Get("TipsView").GetComponent<TipsView>().tips.text = "睡觉吧";
+			UIRoot.Instance.Get("TipsView").GetComponent<TipsView>().DoBed();
+		});
+		var objs = objRoot.GetComponentsInChildren<ObjBase>();
+		foreach (var obj in objs)
+		{
+			objDic.Add(obj.gameObject.name, obj);
 
-		obj2 = button2.GetComponent<ObjBase>();
-		obj2.count = days - 1;
-		button2.onClick.AddListener(OnClickObj2);
-
+			switch (obj.gameObject.name)
+			{
+				case "baozhi":
+					obj.SetTalk(
+						1,
+						"是否看报纸",
+						"不想看报纸",
+						"新闻上写着实验完成了。。。"
+					);
+					break;
+				case "cha":
+					obj.SetTalk(
+						2,
+						"1",
+						"2",
+						"3"
+					);
+					break;
+				case "huo":
+					obj.SetTalk(
+						2,
+						"1",
+						"2",
+						"3"
+					);
+					break;
+				case "yaoji":
+					obj.SetTalk(
+						2,
+						"1",
+						"2",
+						"3"
+					);
+					break;
+				case "wall":
+					obj.SetTalk(
+						2,
+						"1",
+						"2",
+						"3"
+					);
+					break;
+				case "guizi":
+					obj.SetTalk(
+						2,
+						"1",
+						"2",
+						"3"
+					);
+					break;
+				case "door":
+					obj.SetTalk(
+						2,
+						"1",
+						"2",
+						"3"
+					);
+					break;
+				case "deng":
+					obj.SetTalk(
+						2,
+						"1",
+						"2",
+						"3"
+					);
+					break;
+				case "hua":
+					obj.SetTalk(
+						2,
+						"1",
+						"2",
+						"3"
+					);
+					break;
+				case "chair1":
+					obj.SetTalk(
+						2,
+						"1",
+						"2",
+						"3"
+					);
+					break;
+				case "chair2":
+					obj.SetTalk(
+						2,
+						"1",
+						"2",
+						"3"
+					);
+					break;
+				default:
+					break;
+			}
+		}
 	}
-
-	private void OnClickObj1()
-	{
-		UIRoot.Instance.Open("ChatView");
-		chat.GetComponent<ChatView>().speak.text = obj1.talks[obj1.count];
-		UIRoot.Instance.Get("PlayerView").GetComponent<PlayerView>().slider.value += sanityChange1;
-	}
-
-	private void OnClickObj2()
-	{
-		UIRoot.Instance.Open("ChatView");
-		chat.GetComponent<ChatView>().speak.text = obj2.talks[obj2.count];
-		UIRoot.Instance.Get("PlayerView").GetComponent<PlayerView>().slider.value += sanityChange2;
-	}
-
 
 	void Update()
 	{

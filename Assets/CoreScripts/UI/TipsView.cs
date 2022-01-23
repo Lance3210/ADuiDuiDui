@@ -1,31 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-//ÌáÊ¾Ãæ°å
 public class TipsView : MonoBehaviour
 {
-	public Button btn_cancel;
-	public Button btn_quit;
-
+	public Text tips;
+	public Button btn_no;
+	public Button btn_yes;
+	public bool is_bed = false;
+	public event UnityAction onBed;
 	void Start()
 	{
-		btn_cancel.onClick.AddListener(OnClickCancel);
-		btn_quit.onClick.AddListener(OnClickQuit);
+		onBed += OnClickBed;
+		btn_no.onClick.AddListener(OnClickNo);
+		btn_yes.onClick.AddListener(OnClickYes);
 	}
 
-	void OnClickQuit()
+	void OnClickBed()
 	{
-		gameObject.SetActive(false);
-		UIRoot.Instance.Open("GameStartView");
-		UIRoot.Instance.Close("PlayerView");
-		UIRoot.Instance.Close("GameView");
+		is_bed = true;
 	}
 
-	void OnClickCancel()
+	// å¤–éƒ¨äº‹ä»¶
+	public void DoBed()
+	{
+		if (onBed != null)
+		{
+			onBed();
+		}
+	}
+
+	void OnClickYes()
 	{
 		gameObject.SetActive(false);
+		if (is_bed)
+		{
+			GameData.Instance.currDay += 1;
+			print(GameData.Instance.currDay);
+			is_bed = false;
+			return;
+		}
+		GameData.Instance.sanity += 5;
+	}
+
+	void OnClickNo()
+	{
+		gameObject.SetActive(false);
+		if (is_bed)
+		{
+			is_bed = false;
+			return;
+		}
+		GameData.Instance.sanity -= 5;
 	}
 }

@@ -85,7 +85,11 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 1
+<<<<<<< HEAD
+  m_Value: 0
+=======
   m_Value: 50
+>>>>>>> ae2f5f386c52ffab703d2a6c2cfa5f2544415aae
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -280,7 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 0.78431374}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
