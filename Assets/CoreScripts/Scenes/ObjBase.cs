@@ -9,9 +9,7 @@ public class ObjBase : MonoBehaviour
 	public string[] talks;
     void Start()
     {
-		EventMgr.Instance.AddEventListener("ClickObj", (o) => {
-			UIRoot.Instance.Get("ChatView").GetComponent<ChatView>().speak.text = talks[count];
-		});
+
     }
 
     void Update()

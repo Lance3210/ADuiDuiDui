@@ -20,23 +20,21 @@ public class GameView : MonoBehaviour
 		obj1.count = days - 1;
 		button1.onClick.AddListener(OnClickObj1);
 
-		chat = UIRoot.Instance.Get("ChatView");
 		obj2 = button2.GetComponent<ObjBase>();
 		obj2.count = days - 1;
 		button2.onClick.AddListener(OnClickObj2);
+
 	}
 
 	private void OnClickObj1()
 	{
 		UIRoot.Instance.Open("ChatView");
-		EventMgr.Instance.EventTrigger("ClickObj1");
 		chat.GetComponent<ChatView>().speak.text = obj1.talks[obj1.count];
 	}
 
 	private void OnClickObj2()
 	{
 		UIRoot.Instance.Open("ChatView");
-		EventMgr.Instance.EventTrigger("ClickObj2");
 		chat.GetComponent<ChatView>().speak.text = obj2.talks[obj2.count];
 	}
 
