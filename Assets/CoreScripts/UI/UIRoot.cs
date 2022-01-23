@@ -5,15 +5,15 @@ using UnityEngine;
 public class UIRoot : SingletonMgrMonoBase<UIRoot>
 {
 	public Dictionary<string, Transform> panelDic = new Dictionary<string, Transform>();
-    void Start()
-    {
+	private void Start()
+	{
 		Transform obj;
 		for (int i = 0; i < transform.childCount; i++)
 		{
 			obj = transform.GetChild(i);
 			panelDic.Add(obj.name, obj);
 		}
-    }
+	}
 
 	public void Open(string panel)
 	{
@@ -22,7 +22,7 @@ public class UIRoot : SingletonMgrMonoBase<UIRoot>
 			panelDic[panel].gameObject.SetActive(true);
 		}
 	}
-	
+
 	public void Close(string panel)
 	{
 		if (panelDic.ContainsKey(panel))

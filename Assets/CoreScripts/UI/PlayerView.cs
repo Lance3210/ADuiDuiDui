@@ -13,7 +13,6 @@ public class PlayerView : MonoBehaviour
 	public Button btn_setting;
 	public Slider slider;
 	public Text percent;
-	public int sanity = 50;
 	private void OnEnable()
 	{
 		mask.color = Color.black;
@@ -22,22 +21,27 @@ public class PlayerView : MonoBehaviour
 
 	private void Start()
 	{
-		
+		slider.value = GameData.Instance.sanity;
 		btn_setting.onClick.AddListener(OnClickSetting);
 		btn_drink.onClick.AddListener(OnClickDrinking);
 	}
 
 	void OnClickSetting()
 	{
-		UIRoot.Instance.Open("TipsView");
+		UIRoot.Instance.Open("SettingView");
 	}
 
 	void OnClickDrinking()
 	{
-		sanity += 5;
  		print("drink");
-		slider.value += 5;
-		percent.text = sanity.ToString() + "%";
-		
+		GameData.Instance.sanity += 5;
+		slider.value = GameData.Instance.sanity;
+		percent.text = GameData.Instance.sanity.ToString() + "%";
+		if (GameData.Instance.sanity >= 90)
+		{
+			UIRoot.Instance.Open("TipsView");
+			UIRoot.Instance.Get("TipsView").GetComponent<TipsView>().tips.text = "哈哈哈。。。";		
+		}
 	}
+
 }
