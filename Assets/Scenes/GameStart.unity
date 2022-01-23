@@ -277,6 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214098f6be828d247bf2dc1aeae3558b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  root: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,35 +605,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1371431144079279504, guid: 2b66a8fe90e897a4ebd0b7a843ab19c0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1371431144079279504, guid: 2b66a8fe90e897a4ebd0b7a843ab19c0, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1371431144079279504, guid: 2b66a8fe90e897a4ebd0b7a843ab19c0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 250
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1371431144079279504, guid: 2b66a8fe90e897a4ebd0b7a843ab19c0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -250
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3632363796206408522, guid: 2b66a8fe90e897a4ebd0b7a843ab19c0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3632363796206408522, guid: 2b66a8fe90e897a4ebd0b7a843ab19c0, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3632363796206408522, guid: 2b66a8fe90e897a4ebd0b7a843ab19c0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 250
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3632363796206408522, guid: 2b66a8fe90e897a4ebd0b7a843ab19c0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5970810913442110852, guid: 2b66a8fe90e897a4ebd0b7a843ab19c0, type: 3}
       propertyPath: m_Name
@@ -640,7 +641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5970810913442110852, guid: 2b66a8fe90e897a4ebd0b7a843ab19c0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5970810913442110855, guid: 2b66a8fe90e897a4ebd0b7a843ab19c0, type: 3}
       propertyPath: m_Pivot.x

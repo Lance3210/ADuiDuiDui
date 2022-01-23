@@ -12,6 +12,8 @@ public class PlayerView : MonoBehaviour
 	public Button btn_drink;
 	public Button btn_setting;
 	public Slider slider;
+	public Text percent;
+	public int sanity = 50;
 	private void OnEnable()
 	{
 		mask.color = Color.black;
@@ -20,6 +22,7 @@ public class PlayerView : MonoBehaviour
 
 	private void Start()
 	{
+		
 		btn_setting.onClick.AddListener(OnClickSetting);
 		btn_drink.onClick.AddListener(OnClickDrinking);
 	}
@@ -31,6 +34,10 @@ public class PlayerView : MonoBehaviour
 
 	void OnClickDrinking()
 	{
-		print("drink");
+		sanity += 5;
+ 		print("drink");
+		slider.value += 5;
+		percent.text = sanity.ToString() + "%";
+		
 	}
 }

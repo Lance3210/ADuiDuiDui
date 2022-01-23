@@ -85,7 +85,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 73
+  m_Value: 50
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -144,6 +144,8 @@ MonoBehaviour:
   btn_drink: {fileID: 2687495837596926078}
   btn_setting: {fileID: 4083093950605046869}
   slider: {fileID: 507601950825740222}
+  percent: {fileID: 7571324835299306641}
+  sanity: 50
 --- !u!1 &1737638325330732095
 GameObject:
   m_ObjectHideFlags: 0
